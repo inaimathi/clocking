@@ -27,8 +27,8 @@
 (defn charging-status []
   (keyword (clojure.string/lower-case (clojure.string/trim (slurp (str bat "status"))))))
 (defn battery-status []
-  {:charge {:now (bslurp "charge_now") :full (bslurp "charge_full") :design (bslurp "charge_full_design")}
-   :current {:now (bslurp "current_now")}
+  {:energy {:now (bslurp "energy_now") :full (bslurp "energy_full") :design (bslurp "energy_full_design")}
+   :power {:now (bslurp "power_now")}
    :voltage {:now (bslurp "voltage_now") :min (bslurp "voltage_min_design")}
    :capacity (bslurp "capacity") :status (charging-status)})
 
