@@ -91,3 +91,15 @@
 ;; (def t (async/thread (->> (sock/create-server 9871) sock/listen (#(do (println (sock/read-line %)) %)) sock/close-socket)))
 ;; (def s (sock/create-socket "localhost" 9871))
 ;; (sock/write-to s "This is a line\n")
+
+(defn joules-used [start-% end-%]
+  (let [full-charge 4440
+        voltage 11.4
+        charge-used (* full-charge (float (/ (- start-% end-%))))]
+    (* charge-used voltage)))
+
+;; (let [total (- (joules-used 46 23) (joules-used 23 5))
+;;       total-time 22.66
+;;       attrib (fn [t] (* total (/ t total-time)))
+;;       verify (attrib 14.83) sign (attrib 6.63) sha (attrib 1.09)]
+;;   {:ecdsa-verify verify :ecdsa-sign sign :sha256 sha})
